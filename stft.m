@@ -27,10 +27,10 @@ end
 signal = reshape(signal, 1, signalLength);
 window = reshape(window, 1, windowLength);
 
-output = zeros(windowLength, ceil((signalLength-windowLength)/windowShiftLength));
+output = zeros(ceil(windowLength/2), ceil((signalLength-windowLength)/windowShiftLength));
 for n = 1:windowShiftLength:signalLength-windowLength
-    windowedSignal = signal(n:windowLength-1) .* window;
-    fftWindowed = abs(fft(windowedSignal, windowLength));
+    windowedSignal = signal(n:n+windowLength-1) .* window;
+    fftWindowed = db(abs(fft(windowedSignal, windowLength)), 'power');
     idx = ceil(n/windowShiftLength);
-    output(:,idx) = transpose(fliplr(fftWindowed));
+    output(:,idx) = transpose(fftWindowed(1:ceil(windowLength/2)));
 end
