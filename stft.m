@@ -1,4 +1,4 @@
-function output = stft(signal, window, windowShiftLength)
+function [output] = stft(signal, window, windowShiftLength)
 
 signalLength = size(signal);
 if(length(signalLength) ~= 2 || min(signalLength) ~=1)
@@ -26,3 +26,11 @@ end
 
 signal = reshape(signal, 1, signalLength);
 window = reshape(window, 1, windowLength);
+
+output = zeros(windowLength, ceil((signalLength-windowLength)/windowShiftLength));
+for n = 1:windowShiftLength:signalLength-windowLength
+    windowedSignal = signal(n:windowLength-1) .* window;
+    fftWindowed = abs(fft(windowedSignal, windowLength));
+    idx = ceil(n/windowShiftLength);
+    output(:,idx) = transpose(fliplr(fftWindowed));
+end
