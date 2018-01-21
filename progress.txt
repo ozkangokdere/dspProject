@@ -1,6 +1,7 @@
 Data acquisition
 - Sound data from a microphone-----------NOPE
-- Sound data from a file-----------------NOPE but EASY
+- Sound data from a file-----------------DONE
+
 Data generation 
 - Sinusoidal signal----------------------DONE 
 - Windowed sinusoidal--------------------NOPE but EASY
