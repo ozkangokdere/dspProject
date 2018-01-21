@@ -4,6 +4,6 @@ Data acquisition
 Data generation 
 - Sinusoidal signal----------------------DONE 
 - Windowed sinusoidal--------------------NOPE but EASY
-- Rectangle windowed linear chirp--------NOPE but EASY
+- Rectangle windowed linear chirp--------DONE
 - Signal involving multiple components---NOPE
 Spectrogram------------------------------DONE
