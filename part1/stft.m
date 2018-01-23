@@ -30,7 +30,7 @@ window = reshape(window, 1, windowLength);
 output = zeros(ceil(windowLength/2), ceil((signalLength-windowLength)/windowShiftLength));
 for n = 1:windowShiftLength:signalLength-windowLength
     windowedSignal = signal(n:n+windowLength-1) .* window;
-    fftWindowed = db(abs(fft(windowedSignal, windowLength)), 'power');
+    fftWindowed = 10*log10(abs(fft(windowedSignal, windowLength)));
     idx = ceil(n/windowShiftLength);
     output(:,idx) = transpose(fftWindowed(1:ceil(windowLength/2)));
 end
